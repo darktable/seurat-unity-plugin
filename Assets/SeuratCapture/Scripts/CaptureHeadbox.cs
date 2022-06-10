@@ -130,7 +130,9 @@ public class CaptureHeadbox : MonoBehaviour {
 
     string capture_output_folder = output_folder_;
     if (capture_output_folder.Length <= 0) {
+#if UNITY_EDITOR
       capture_output_folder = FileUtil.GetUniqueTempPathInProject();
+#endif      
     }
     Directory.CreateDirectory(capture_output_folder);
     capture_.BeginCapture(this, capture_output_folder, 1, new CaptureStatus());
